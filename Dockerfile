@@ -1,5 +1,5 @@
 # Stage 1: Build the Nest.js application
-FROM node:23-alpine AS builder
+FROM node:24-alpine AS builder
 
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
@@ -20,7 +20,7 @@ COPY . .
 RUN pnpm build
 
 # Stage 2: Run the application with a minimal image
-FROM node:23-alpine AS runner
+FROM node:24-alpine AS runner
 
 # Install pnpm again for the runtime stage
 RUN corepack enable && corepack prepare pnpm@latest --activate
